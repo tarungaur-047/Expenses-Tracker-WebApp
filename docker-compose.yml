@@ -1,4 +1,5 @@
 version: "3.8"
+
 services:
   mysql:
     image: mysql:latest
@@ -8,6 +9,8 @@ services:
       MYSQL_DATABASE: expenses_tracker
     volumes:
       - ./mysql-data:/var/lib/mysql
+      ports:
+      - "3306:3306"
     networks:
       - appbridge
     healthcheck:
@@ -35,6 +38,4 @@ services:
 
 networks:
   appbridge:
-
-volumes:
-  mysql-data:
+  driver: bridge 
